@@ -18,7 +18,7 @@ class Rosenbrock implements Function {
         {
             double p1 = Math.pow(1-x[i], 2);
             double p2 = Math.pow(x[i], 2);
-            double p3 = 100 + Math.pow(x[i+1] - p2, 2);
+            double p3 = 100 * Math.pow(x[i+1] - p2, 2);
 
             sum += p1 + p3;
         }

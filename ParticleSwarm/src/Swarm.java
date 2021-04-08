@@ -71,13 +71,8 @@ public class Swarm {
             threads.clear();
 
             if (hasFoundTheBest) {
-                System.out.println("Found Global Best Evaluation (Epoch " + i + "):\t" + bestGlobalEval);
                 break;
             }
-        }
-
-        if (!hasFoundTheBest) {
-            System.out.println("The maximum number of epochs is reached!");
         }
     }
 
@@ -103,13 +98,8 @@ public class Swarm {
             threads.clear();
 
             if (hasFoundTheBest) {
-                System.out.println("Found Global Best Evaluation (Epoch " + i + "):\t" + bestGlobalEval);
                 break;
             }
-        }
-
-        if (!hasFoundTheBest) {
-            System.out.println("The maximum number of epochs is reached!");
         }
 
         exec.shutdown();
@@ -130,13 +120,8 @@ public class Swarm {
             }
 
             if (hasFoundTheBest) {
-                System.out.println("Found Global Best Evaluation (Epoch " + i + "):\t" + bestGlobalEval);
                 break;
             }
-        }
-
-        if (!hasFoundTheBest) {
-            System.out.println("The maximum number of epochs is reached!");
         }
     }
 
@@ -149,11 +134,16 @@ public class Swarm {
             bestGlobalEval = eval;
 
             if (i != -1) {
-                System.out.println("Global Best Evaluation (Epoch " + (i + 1) + "):\t" + bestGlobalEval);
+                ShowBestGlobalEvaluation(i, eval <= exitError);
             }
         }
 
         return eval <= exitError;
+    }
+
+    private void ShowBestGlobalEvaluation(int i, boolean foundTheBest) {
+        var text = foundTheBest ? "Found " : "";
+        System.out.println(text + "Global Best Evaluation (Epoch " + (i + 1) + "):\t" + bestGlobalEval);
     }
 
     public double[] GetBestPosition() {
